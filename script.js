@@ -141,52 +141,62 @@ function displayImages() {
     gallery.innerHTML = "";
 
     capturedImage.forEach(function (imageUrl, index) {
-        const createTagArticle = document.createElement("article");
-        const createTagImg = document.createElement("img");
-        const createTagDiv = document.createElement("div");
-        const createDownloadBtn = document.createElement("button");
-        const createSpanDownload = document.createElement("span");
-        const createDeleteBtn = document.createElement("button");
-        const createSpanDelete = document.createElement("span");
-
-        gallery.appendChild(createTagArticle);
-
-        createTagArticle.appendChild(createTagImg);
-        createTagImg.src = imageUrl;
-
-        createTagArticle.appendChild(createTagDiv);
-
-        createTagDiv.appendChild(createDownloadBtn);
-
-        createDownloadBtn.appendChild(createSpanDownload);
-        createSpanDownload.classList.add("material-symbols-outlined");
-        createSpanDownload.innerText = "download";
-        createSpanDownload.addEventListener("click", function () {
-            const downloadLink = document.createElement("a");
-            downloadLink.href = imageUrl;
-            downloadLink.download = `image_${index + 1}.jpg`; // Nome do arquivo a ser baixado
-
-            // Adiciona o link temporário ao documento
-            document.body.appendChild(downloadLink);
-
-            // Simula um clique no link para iniciar o download
-            downloadLink.click();
-
-            // Remove o link temporário do documento
-            document.body.removeChild(downloadLink);
-        });
-
-        createTagDiv.appendChild(createDeleteBtn);
-
-        createDeleteBtn.appendChild(createSpanDelete);
-        createSpanDelete.classList.add("material-symbols-outlined");
-        createSpanDelete.innerText = "delete";
-        createSpanDelete.addEventListener("click", function () {
-            capturedImage.splice(index, 1);
-            saveToLocalStorage();
-            displayImages();
-        });
+        const article = createImageArticle(imageUrl, index);
+        gallery.appendChild(article);
     });
+}
+
+function createImageArticle(imageUrl, index) {
+    const article = document.createElement("article");
+    const img = document.createElement("img");
+    const div = document.createElement("div");
+
+    img.src = imageUrl;
+    article.appendChild(img);
+
+    div.appendChild(
+        createButton("download", function () {
+            downloadImage(imageUrl, index);
+        })
+    );
+
+    div.appendChild(
+        createButton("delete", function () {
+            deleteImage(index);
+        })
+    );
+
+    article.appendChild(div);
+    return article;
+}
+
+function createButton(symbol, clickHandler) {
+    const button = document.createElement("button");
+    const span = document.createElement("span");
+
+    span.classList.add("material-symbols-outlined");
+    span.innerText = symbol;
+
+    button.appendChild(span);
+    button.addEventListener("click", clickHandler);
+
+    return button;
+}
+
+function downloadImage(imageUrl, index) {
+    const downloadLink = document.createElement("a");
+    downloadLink.href = imageUrl;
+    downloadLink.download = `image_${index + 1}.jpg`;
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
+
+function deleteImage(index) {
+    capturedImage.splice(index, 1);
+    saveToLocalStorage();
+    displayImages();
 }
 
 //Salva a Url da imagem no navegador
