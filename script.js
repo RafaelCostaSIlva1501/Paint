@@ -216,4 +216,4 @@ function loadFromLocalStorage() {
     }
 }
 
-capturedImage = loadFromLocalStorage();
+loadFromLocalStorage();
