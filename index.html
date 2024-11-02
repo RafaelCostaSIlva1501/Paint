@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paint | Dev Rafael Costa Silva</title> 
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
-</head>
-<body>
-    
-    <section class="container">
-        <div>
-            <section class="caixa-ferramentas">
-                <abbr title="Pincel">
-                    <button class="ferramentas" id="brush">
-                        <span class="material-symbols-outlined">brush</span>
-                    </button>
-                </abbr>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paint | Dev Rafael da Costa Silva</title>
 
-                <abbr title="Balde de Tinta">
-                    <button class="ferramentas" id="bucketColor">
-                        <span class="material-symbols-outlined">colors</span>
-                    </button>
-                </abbr>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 
-                <abbr title="Borracha">
-                    <button class="ferramentas" id="erase">
-                        <span class="material-symbols-outlined">ink_eraser</span>
-                    </button>
-                </abbr>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <header class="home-header">
+      <a href="https://rafaelcostasilva1501.github.io/Mini-Game/">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      <h1>Paint</h1>
+    </header>
 
-                <abbr title="Cor">
-                    <input type="color" id="color">
-                </abbr>
-            </section>
+    <main id="main">
+      <nav>
+        <div class="tool-box">
+          <abbr title="Pincel">
+            <button class="tool pencil" data-tool="brush">
+              <span class="material-symbols-outlined">brush</span>
+            </button>
+          </abbr>
 
-            <section class="caixa-ferramentas">
-                <input type="range" value="5" min="5" max="30" id="brushSize">
-            </section>
+          <abbr title="Pincel 2">
+            <button class="tool pencil" data-tool="brush-two">
+              <span class="material-symbols-outlined">stylus_note</span>
+            </button>
+          </abbr>
 
-            <section class="caixa-ferramentas">
-                <button class="ferramentas" id="clear">
-                    <span class="material-symbols-outlined">delete</span>
-                </button>
+          <abbr title="Balde de Tinta">
+            <button class="tool pencil" data-tool="bucket">
+              <span class="material-symbols-outlined">colors</span>
+            </button>
+          </abbr>
 
-                <button class="ferramentas" id="download">
-                    <span class="material-symbols-outlined">download</span>
-                </button>
-
-                <button class="ferramentas" id="openGallery">
-                    <span class="material-symbols-outlined">photo_library</span>
-                </button>
-            </section>
+          <abbr title="Borracha">
+            <button class="tool pencil" data-tool="erase">
+              <span class="material-symbols-outlined">ink_eraser</span>
+            </button>
+          </abbr>
         </div>
 
-        <canvas width="480" height="480"></canvas>
-        <button class="save-image" id="saveImage">Salvar</button>
-    </section>
+        <div class="tool-box">
+          <input type="range" value="5" min="5" max="20" class="size" />
+        </div>
 
-    <section class="container-gallery" id="container-gallery">
+        <div class="tool-box">
+          <button
+            class="color"
+            style="background-color: #ff0000"
+            data-color="#ff0000"
+          ></button>
+          <button
+            class="color"
+            style="background-color: #ffa500"
+            data-color="#ffa500"
+          ></button>
+          <button
+            class="color"
+            style="background-color: #ffff00"
+            data-color="#ffff00"
+          ></button>
+          <button
+            class="color"
+            style="background-color: #adff2f"
+            data-color="#adff2f"
+          ></button>
+          <button
+            class="color"
+            style="background-color: #5f9ea0"
+            data-color="#5f9ea0"
+          ></button>
+          <button
+            class="color"
+            style="background-color: #0000ff"
+            data-color="#0000ff"
+          ></button>
+          <button
+            class="color"
+            style="background-color: #8a2be2"
+            data-color="#8a2be2"
+          ></button>
 
-        <section class="gallery-header">
-            <h2>Galeria</h2>
-            <button id="close-gallery">
-                <span class="material-symbols-outlined">close</span>
+          <input type="color" id="Icolor" />
+        </div>
+
+        <div class="tool-box">
+          <abbr title="Limpar tela">
+            <button class="tool clear">
+              <span class="material-symbols-outlined">delete</span>
             </button>
-        </section>
+          </abbr>
 
-        <section class="gallery" id="gallery">
-        </section>
-    </section>
+          <abbr title="Baixar imagem">
+            <button class="tool download">
+              <span class="material-symbols-outlined">download</span>
+            </button>
+          </abbr>
+        </div>
+      </nav>
+
+      <section><canvas></canvas></section>
+    </main>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
