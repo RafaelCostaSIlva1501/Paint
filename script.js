@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-const main = document.getElementById("main");
+const screenSize = document.querySelector(".screen-size");
 
 const tool = document.querySelectorAll(".pencil");
 const size = document.querySelector(".size");
@@ -22,14 +22,14 @@ let painting = {
 };
 
 const resize = () => {
-  const width = main.offsetWidth;
-  const height = main.offsetHeight;
+  const width = screenSize.offsetWidth;
+  const height = screenSize.offsetHeight;
 
   canvas.width = width - 100;
-  canvas.height = height - 150;
+  canvas.height = height - 100;
 
   canvas.style.width = width - 100;
-  canvas.style.height = height - 150;
+  canvas.style.height = height - 100;
 };
 
 resize()
