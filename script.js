@@ -76,6 +76,8 @@ canvas.addEventListener("mouseup", ({ clientX, clientY }) => {
   initSize = 1;
 });
 
+canvas.addEventListener("mouseleave", () => {isDrawing = false})
+
 const brush = (x, y) => {
   ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = painting.color;
