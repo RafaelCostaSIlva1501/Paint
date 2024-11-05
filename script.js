@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 const screenSize = document.querySelector(".screen-size");
 
 const tool = document.querySelectorAll(".pencil");
-const size = document.querySelector(".size");
+const size = document.querySelectorAll(".size");
 const color = document.querySelectorAll(".color");
 let Icolor = document.getElementById("Icolor");
 
@@ -32,7 +32,7 @@ const resize = () => {
   canvas.style.height = height - 100;
 };
 
-resize()
+resize();
 
 window.addEventListener("resize", resize);
 
@@ -42,8 +42,11 @@ tool.forEach((e) => {
   });
 });
 
-size.addEventListener("input", (e) => {
-  painting.size = e.target.value;
+size.forEach((e) => {
+  e.addEventListener("click", (e) => {
+    console.log("Foi!");
+    painting.size = Number(e.target.dataset.size);
+  });
 });
 
 Icolor.addEventListener("input", (e) => {
@@ -76,7 +79,9 @@ canvas.addEventListener("mouseup", ({ clientX, clientY }) => {
   initSize = 1;
 });
 
-canvas.addEventListener("mouseleave", () => {isDrawing = false})
+canvas.addEventListener("mouseleave", () => {
+  isDrawing = false;
+});
 
 const brush = (x, y) => {
   ctx.globalCompositeOperation = "source-over";

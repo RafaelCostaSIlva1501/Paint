@@ -66,7 +66,6 @@ nav {
 .tool-box {
   display: flex;
   align-items: center;
-  flex: 1;
   gap: 5px;
 
   padding: 10px;
@@ -81,6 +80,8 @@ nav {
 
 .tool {
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   background: none;
   border: none;
@@ -93,8 +94,29 @@ nav {
   transform: scale(1.1);
 }
 
-input[type="range"] {
-  width: 100%;
+.size {
+  height: 100%;
+  background-color: black;
+}
+
+.tool-box .size:nth-of-type(1) {
+  width: 5px;
+}
+
+.tool-box .size:nth-of-type(2) {
+  width: 7px;
+}
+
+.tool-box .size:nth-of-type(3) {
+  width: 9px;
+}
+
+.tool-box .size:nth-of-type(4) {
+  width: 11px;
+}
+
+.tool-box .size:nth-of-type(5) {
+  width: 13px;
 }
 
 .color {
@@ -121,6 +143,13 @@ input[type="color"] {
 
   background: none;
   border: none;
+
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+input[type="color"]:hover {
+  transform: scale(1.1);
 }
 
 input[type="color"]::-webkit-color-swatch {
@@ -157,5 +186,30 @@ canvas {
   .tool-box {
     flex-direction: column;
     flex: 0;
+  }
+
+  .tool-box .size:nth-of-type(1) {
+    width: 100%;
+    height: 5px;
+  }
+
+  .tool-box .size:nth-of-type(2) {
+    width: 100%;
+    height: 7px;
+  }
+
+  .tool-box .size:nth-of-type(3) {
+    width: 100%;
+    height: 9px;
+  }
+
+  .tool-box .size:nth-of-type(4) {
+    width: 100%;
+    height: 11px;
+  }
+
+  .tool-box .size:nth-of-type(5) {
+    width: 100%;
+    height: 13px;
   }
 }
