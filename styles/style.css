@@ -54,8 +54,8 @@ main {
 
 nav {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  flex-wrap: wrap;
   gap: 5px;
 
   width: 100%;
@@ -64,9 +64,15 @@ nav {
   background-color: #212529;
 }
 
+nav > div {
+  display: flex;
+  gap: 5px;
+}
+
 .tool-box {
   display: flex;
   align-items: center;
+  flex: 1;
   gap: 5px;
 
   padding: 10px;
