@@ -185,9 +185,14 @@ canvas {
   }
 
   nav {
+    justify-content: start;
     flex-direction: column;
     height: 100%;
     width: min-content;
+  }
+
+  nav > div {
+    flex-direction: column;
   }
 
   .tool-box {
